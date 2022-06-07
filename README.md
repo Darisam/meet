@@ -1,4 +1,4 @@
-This repository will conatin an app that allosw the user to find upcoming events. It will implement the following functionalities.
+This repository will contain an app that allows the user to find upcoming events. It will implement the following functionalities.
 
 - As a user I should be able to filter events by city, so I can more easily find the events that are of interest to me.
 
