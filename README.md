@@ -37,11 +37,12 @@ This repository will conatin an app that allosw the user to find upcoming events
 
   1. **_Given_** the app is not connected to the internet,  
      **_when_** the app is used,  
-     **_then_** it shall display the information available from chached data.
+     **_then_** it shall display the information available from cached data.
   2. **_Given_** the app is not connected to the internet,  
-     **_when_** the user changes the settings and tries to access information not available from cache,
+     **_when_** the user changes the settings and tries to access information not available from cache,  
      **_then_** a warning shall be shown that there in no internet connection.
 
 - As a user, I should be able to see the number of upcoming events in each city, so I won't search for events in a city which doesn't have any. (To be honest, I am not fully conviced by this, but I have trouble thinking of any practical use case for having a visualisation of upcoming events per city.)
-  1. **\*Given\*\*** the app is running, \***_when_** the user clicks on a link to the number of upcoming events,
+  1. **_Given_** the app is running,  
+     **_when_** the user clicks on a link to the number of upcoming events,  
      **_then_** the user will see a chart with the number of upcoming events for each city.
