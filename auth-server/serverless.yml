@@ -74,7 +74,7 @@ functions:
     handler: handler.getAccesstoken
     events:
       - http:
-          path: api/token/({code}
+          path: api/token/{code}
           method: get
 #  hello:
 #    handler: handler.hello
