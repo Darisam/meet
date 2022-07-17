@@ -70,6 +70,12 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
+  getAccessToken:
+    handler: handler.getAccesstoken
+    events:
+      - http:
+          path: api/token/({code}
+          method: get
 #  hello:
 #    handler: handler.hello
 #    The following are a few example events you can configure
