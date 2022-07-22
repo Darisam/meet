@@ -21,7 +21,7 @@ This repository will contain an serverless progressive web application wriiten i
      **_when_** the user clicks on an event,  
      **_then_** the details for the event will be shown.
   3. **_Given_** that the details of an event are shown,  
-     **_when_** the user clicks on a button to hide the details,
+     **_when_** the user clicks on a button to hide the details,  
      **_then_** the event element collapses and the list of events is shown again.
 
 - As a user, I should be able to change the number of events shown, so I can adjust the view to fit the size of my device and my preferences.
