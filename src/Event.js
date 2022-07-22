@@ -17,13 +17,15 @@ class Event extends Component {
         <h2>{event.summary}</h2>
         <span className="startTime">{event.startTime}</span>
         <span className="location">{event.location}</span>
-        <div
-          className={`details ${this.state.areDetailsHidden ? 'hidden' : ''}`}
-        >
-          <h3>About event:</h3>
-          <a href={event.htmlLink}>See details on Google Calendar</a>
-          <p className="description">{event.description}</p>
-        </div>
+        {this.state.areDetailsHidden ? (
+          ''
+        ) : (
+          <div className={'details'}>
+            <h3>About event:</h3>
+            <a href={event.htmlLink}>See details on Google Calendar</a>
+            <p className="description">{event.description}</p>
+          </div>
+        )}
         <button className="toggleDetails" onClick={this.toggleState}></button>
       </div>
     );
