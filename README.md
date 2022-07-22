@@ -10,7 +10,7 @@ This repository will contain an serverless progressive web application wriiten i
      **_then_** the user should see a list of cities (suggestions) that match what they’ve typed.
   3. **_Given_** the user was typing “Berlin” in the city textbox and the list of suggested cities is showing,  
      **_when_** the user selects a city (e.g., “Berlin, Germany”) from the list,  
-     **_then_** their city should be changed to that city (i.e., “Berlin, Germany”) and the user should receive a list of upcoming events in that city.
+     **_then_** their city should be changed to that city (i.e., “Berlin, Germany”), the list of suggestions should disappear, and the user should receive a list of upcoming events in that city.
 
 - As a user I should be able to see the details of an event, so I can decide whether to attend it.
 
