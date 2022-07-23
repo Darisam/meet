@@ -7,15 +7,14 @@ class Event extends Component {
     this.setState({ areDetailsHidden: !this.state.areDetailsHidden });
   };
 
-  // Actually hiding the details will be done with css.
-
   render() {
     const { event } = this.props;
 
     return (
       <div className="event">
         <h2>{event.summary}</h2>
-        <span className="startTime">{event.startTime}</span>
+        <span className="startTime">{event.start.dateTime}</span>
+        <br />
         <span className="location">{event.location}</span>
         {this.state.areDetailsHidden ? (
           ''
@@ -26,7 +25,10 @@ class Event extends Component {
             <p className="description">{event.description}</p>
           </div>
         )}
-        <button className="toggleDetails" onClick={this.toggleState}></button>
+        <br />
+        <button className="toggleDetails" onClick={this.toggleState}>
+          {this.state.areDetailsHidden ? 'Show Details' : 'Hide Details'}
+        </button>
       </div>
     );
   }
