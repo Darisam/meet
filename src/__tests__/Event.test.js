@@ -2,13 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Event from '../Event';
 import { calendarEvent } from '../mock-data';
-import { extractDetails } from '../api';
 
 describe('<Event /> Component', () => {
-  let EventWrapper, eventDetails;
+  let EventWrapper;
   beforeAll(() => {
-    eventDetails = extractDetails(calendarEvent);
-    EventWrapper = shallow(<Event event={eventDetails} />);
+    EventWrapper = shallow(<Event event={calendarEvent} />);
   });
 
   test('render event', () => {
@@ -19,15 +17,15 @@ describe('<Event /> Component', () => {
     expect(EventWrapper.find('.event h2')).toHaveLength(1);
   });
   test('insert event summary into header element', () => {
-    expect(EventWrapper.find('.event h2').text()).toBe(eventDetails.summary);
+    expect(EventWrapper.find('.event h2').text()).toBe(calendarEvent.summary);
   });
 
   test('render start time of the event', () => {
-    expect(EventWrapper.find('.event .startTime')).toHaveLength(1);
+    expect(EventWrapper.find('.startTime')).toHaveLength(1);
   });
   test('insert correct start time into startTime element', () => {
-    expect(EventWrapper.find('.event .startTime').text()).toBe(
-      eventDetails.startTime
+    expect(EventWrapper.find('.startTime').text()).toBe(
+      calendarEvent.start.dateTime
     );
   });
 
@@ -36,12 +34,11 @@ describe('<Event /> Component', () => {
   });
   test('insert correct location into location element', () => {
     expect(EventWrapper.find('.event .location').text()).toBe(
-      eventDetails.location
+      calendarEvent.location
     );
   });
 
   /* The following six test check whether the proper details are displayed, provided areDetailsHidden is false. */
-
   test('render details about the event', () => {
     EventWrapper.setState({ areDetailsHidden: false });
     expect(EventWrapper.find('.details')).toHaveLength(1);
@@ -59,7 +56,7 @@ describe('<Event /> Component', () => {
   test('insert correct description into description element', () => {
     EventWrapper.setState({ areDetailsHidden: false });
     expect(EventWrapper.find('.details .description').text()).toBe(
-      eventDetails.description
+      calendarEvent.description
     );
   });
 
@@ -70,7 +67,7 @@ describe('<Event /> Component', () => {
   test('insert correct URL into link element', () => {
     EventWrapper.setState({ areDetailsHidden: false });
     expect(EventWrapper.find('.details a').prop('href')).toBe(
-      eventDetails.htmlLink
+      calendarEvent.htmlLink
     );
   });
 

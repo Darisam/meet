@@ -6,7 +6,10 @@ import { calendarEventList } from '../mock-data';
 
 describe('<EventList /> Component', () => {
   test('render correct number of events', () => {
-    const EventListWrapper = shallow(<EventList events={calendarEventList} />);
+    const EventListWrapper = shallow(
+      <EventList eventsToShow={calendarEventList} />
+    );
+
     expect(EventListWrapper.find(Event)).toHaveLength(calendarEventList.length);
   });
 });
