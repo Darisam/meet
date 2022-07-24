@@ -1,5 +1,7 @@
 import { calendarEventList } from './mock-data';
-/*
+import axios from 'axios';
+import NProgress from 'nprogress';
+
 const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
@@ -81,15 +83,9 @@ const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    let events = result.data.events;
+    return events;
   }
-};
-
-
-export { extractLocations, getEvents, getAccessToken };
-*/
-const getEvents = () => {
-  return calendarEventList;
 };
 
 const extractLocations = (events) => {
