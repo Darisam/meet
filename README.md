@@ -22,7 +22,7 @@ This repository will contain an serverless progressive web application wriiten i
      **_then_** the details for the event will be shown.
   3. **_Given_** that the details of an event are shown,  
      **_when_** the user clicks on a button to hide the details,  
-     **_then_** the event element collapses and the list of events is shown again.
+     **_then_** the details are hidden again.
 
 - As a user, I should be able to change the number of events shown, so I can adjust the view to fit the size of my device and my preferences.
 
@@ -30,7 +30,7 @@ This repository will contain an serverless progressive web application wriiten i
      **_when_** the user hasn't changed anything,  
      **_then_** at most 32 events will be displayed at once.
   2. **_Given_** a list of events is shown,  
-     **_when_** the user clicks on a number in a field specifying the number of events shown,  
+     **_when_** the user changes the number in a field specifying the number of events shown,  
      **_then_** up to the new number of events will be shown at once.
 
 - As a user, I should be able use the app offline, so I can use it even in an area with no network.
