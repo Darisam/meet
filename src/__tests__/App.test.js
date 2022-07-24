@@ -28,14 +28,6 @@ describe('<App /> component', () => {
 });
 
 describe('<App /> integration', () => {
-  /*test('App passes events state as a prop to EventList', () => {
-    const AppWrapper = mount(<App />);
-    const AppEventState = AppWrapper.state('events');
-    expect(AppEventState).not.toEqual(undefined);
-    expect(AppWrapper.find(EventList).props().eventsToShow).toEqual(AppEventState);
-    AppWrapper.unmount();
-  });*/
-
   test('App passes the events to show as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
     const eventList = AppWrapper.instance().eventsToShow();
@@ -51,23 +43,6 @@ describe('<App /> integration', () => {
     );
     AppWrapper.unmount();
   });
-
-  /*test('get list of events matching the city chosen by user', async () => {
-    const AppWrapper = mount(<App />);
-    const CitySearchWrapper = AppWrapper.find(CitySearch);
-    const locations = extractLocations(calendarEventList);
-    CitySearchWrapper.setState({ suggestions: locations });
-    const suggestions = CitySearchWrapper.state('suggestions');
-    const selectedIndex = Math.floor(Math.random() * suggestions.length);
-    const selectedCity = suggestions[selectedIndex];
-    await CitySearchWrapper.instance().handleItemClick(selectedCity);
-    const allEvents = await getEvents();
-    const eventsToShow = allEvents.filter(
-      (event) => event.location === selectedCity
-    );
-    expect(AppWrapper.state('events')).toEqual(eventsToShow);
-    AppWrapper.unmount();
-  });*/
 
   test('get location to be shown from CitySearch', async () => {
     const AppWrapper = mount(<App />);
