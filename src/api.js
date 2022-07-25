@@ -61,6 +61,22 @@ const removeQuery = () => {
   }
 };
 
+// Get rid of unused data to save memory
+
+const extractUsedData = (eventList) => {
+  const shortenEvent = (event) => {
+    return {
+      id: event.id,
+      location: event.location,
+      start: { dateTime: event.start.dateTime },
+      summary: event.summary,
+      description: event.description,
+      htmlLink: event.htmlLinl,
+    };
+  };
+  return eventList.map(shortenEvent);
+};
+
 const getEvents = async () => {
   NProgress.start();
 
@@ -83,7 +99,7 @@ const getEvents = async () => {
       localStorage.setItem('locations', JSON.stringify(locations));
     }
     NProgress.done();
-    let events = result.data.events;
+    let events = extractUsedData(result.data.events);
     return events;
   }
 };
