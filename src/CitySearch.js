@@ -19,17 +19,19 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
-        {/*<label for="city"> Search for a city </label>*/}
-        <input
-          type="text"
-          id="city"
-          className="city"
-          value={this.state.query}
-          onChange={this.handleInputChange}
-          onFocus={() => {
-            this.setState({ showSuggestions: true });
-          }}
-        />
+        <div>
+          <label for="city"> Search for a city </label>
+          <input
+            type="text"
+            id="city"
+            className="city"
+            value={this.state.query}
+            onChange={this.handleInputChange}
+            onFocus={() => {
+              this.setState({ showSuggestions: true });
+            }}
+          />
+        </div>
         <ul
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: 'none' }}

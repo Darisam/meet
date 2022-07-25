@@ -3,7 +3,7 @@
   text-align: center;
   padding: 2% 5%;
   max-width: 600px;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   margin: auto;
 }
 
@@ -39,6 +39,10 @@ input[type="number"] {
   height: 38px;
 }
 
+.number-of-events {
+  margin-top: 1em;
+}
+
 .number-of-events label {
   margin-right: 1em;
 }
@@ -51,9 +55,13 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
-  max-width: 300px;
+  max-width: 500px;
   margin: auto;
   position: relative;
+}
+
+.CitySearch label {
+  margin-right: 1em;
 }
 
 .suggestions {
