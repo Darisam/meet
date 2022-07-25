@@ -12,7 +12,11 @@ class CitySearch extends Component {
   };
 
   handleItemClick = (suggestion) => {
-    this.setState({ query: suggestion, showSuggestions: false });
+    this.setState({
+      query: suggestion,
+      suggestions: [],
+      showSuggestions: false,
+    });
     this.props.updateLocation(suggestion);
   };
 
