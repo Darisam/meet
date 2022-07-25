@@ -6,7 +6,7 @@ class CitySearch extends Component {
   handleInputChange = (event) => {
     const value = event.target.value;
     const suggestions = this.props.locations.filter((location) => {
-      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+      return location.toUpperCase().startsWith(value.toUpperCase());
     });
     this.setState({ query: value, suggestions: suggestions });
   };
