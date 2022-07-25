@@ -71,7 +71,7 @@ const extractUsedData = (eventList) => {
       start: { dateTime: event.start.dateTime },
       summary: event.summary,
       description: event.description,
-      htmlLink: event.htmlLinl,
+      htmlLink: event.htmlLink,
     };
   };
   return eventList.map(shortenEvent);
@@ -82,7 +82,7 @@ const getEvents = async () => {
 
   if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
-    return calendarEventList;
+    return extractUsedData(calendarEventList);
   }
 
   const token = await getAccessToken();
