@@ -17,8 +17,8 @@ This repository will contain an serverless progressive web application wriiten i
   1. **_Given_** the main page is displayed,  
      **_when_** the user hasn't yet selected a specific event,  
      **_then_** a list of events is shown, where each event is described only briefly.
-  2. **_Given_** a list of events is diplayed,  
-     **_when_** the user clicks on an event,  
+  2. **_Given_** an event is diplayed,  
+     **_when_** the user clicks on the show button,,  
      **_then_** the details for the event will be shown.
   3. **_Given_** that the details of an event are shown,  
      **_when_** the user clicks on a button to hide the details,  
