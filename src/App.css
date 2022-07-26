@@ -60,14 +60,19 @@ input[type="number"] {
   position: relative;
 }
 
+
+/*.InfoAlert {
+  border: 3px solid blue;
+}*/
+
 .CitySearch label {
   margin-right: 1em;
 }
 
 .suggestions {
   width: 250px;
-  /* position: absolute; */
-  z-index: 2;
+   /*position: absolute;*/
+  /*z-index: 2;*/
   align-self: center;
   margin: 0;
   top: 43px;
