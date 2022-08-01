@@ -85,6 +85,12 @@ const getEvents = async () => {
     return extractUsedData(calendarEventList);
   }
 
+  if (!navigator.online) {
+    const data = localStorage.getItem('lastEvents');
+    NProgress.done();
+    return data ? JSON.parse(data).events : [];
+  }
+
   const token = await getAccessToken();
 
   if (token) {
