@@ -5,9 +5,15 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
+import { InfoAlert } from './Alert';
 
 class App extends Component {
-  state = { events: [], location: 'all', numberOfEvents: 32 };
+  state = {
+    events: [],
+    location: 'all',
+    numberOfEvents: 32,
+    onlineStatus: true,
+  };
 
   eventsToShow = () => {
     const { events, location, numberOfEvents } = this.state;
@@ -28,6 +34,17 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
+    if (!navigator.onLine) {
+      this.setState({ onlineStatus: false });
+    }
+
+    window.addEventListener('online', (e) => {
+      this.setState({ onlineStatus: true });
+    });
+    window.addEventListener('offline', (e) => {
+      this.setState({ onlineStatus: false });
+    });
+
     getEvents().then((events) => {
       this.setState({ events: events });
     });
@@ -42,6 +59,13 @@ class App extends Component {
     let locations = extractLocations(this.state.events);
     return (
       <div className="App">
+        <InfoAlert
+          text={
+            this.state.onlineStatus
+              ? ''
+              : 'The App is offline. No new data can be loaded.'
+          }
+        />
         <CitySearch
           locations={locations}
           updateLocation={this.updateLocation}

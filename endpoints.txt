@@ -1,3 +1,8 @@
-endpoint: GET - https://mpsz2rdhq1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url
+endpoints:
+  GET - https://mpsz2rdhq1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url
+  GET - https://mpsz2rdhq1.execute-api.eu-central-1.amazonaws.com/dev/api/token/{code}
+  GET - https://mpsz2rdhq1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/{token}
 functions:
   getAuthURL: auth-server-dev-getAuthURL (10 MB)
+  getAccessToken: auth-server-dev-getAccessToken (10 MB)
+  getCalendarEvents: auth-server-dev-getCalendarEvents (10 MB)
