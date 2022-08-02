@@ -4,7 +4,8 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents } from './api';
+import { extractLocations, getEvents, getAccessToken, checkToken } from './api';
+import WelcomeScreen from './WelcomeScreen';
 import { InfoAlert } from './Alert';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     location: 'all',
     numberOfEvents: 32,
     onlineStatus: true,
+    showWelcomeScreen: undefined,
   };
 
   eventsToShow = () => {
@@ -32,12 +34,11 @@ class App extends Component {
     this.setState({ location: location });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     if (!navigator.onLine) {
       this.setState({ onlineStatus: false });
     }
-
     window.addEventListener('online', (e) => {
       this.setState({ onlineStatus: true });
     });
@@ -45,9 +46,18 @@ class App extends Component {
       this.setState({ onlineStatus: false });
     });
 
-    getEvents().then((events) => {
-      this.setState({ events: events });
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events: events });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -57,6 +67,10 @@ class App extends Component {
   render() {
     let eventsToShow = this.eventsToShow();
     let locations = extractLocations(this.state.events);
+    if (this.state.showWelcomeScreen === undefined) {
+      return <div className="App"></div>;
+    }
+
     return (
       <div className="App">
         <InfoAlert
@@ -72,6 +86,12 @@ class App extends Component {
         />
         <NumberOfEvents updateNumber={this.updateNumber} />
         <EventList eventsToShow={eventsToShow} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }
