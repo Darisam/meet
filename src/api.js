@@ -85,10 +85,10 @@ const getEvents = async () => {
     return extractUsedData(calendarEventList);
   }
 
-  if (!navigator.online) {
-    const data = localStorage.getItem('lastEvents');
+  if (!navigator.onLine) {
+    const lastEvents = localStorage.getItem('lastEvents');
     NProgress.done();
-    return data ? JSON.parse(data).events : [];
+    return lastEvents ? JSON.parse(lastEvents) : [];
   }
 
   const token = await getAccessToken();
@@ -99,14 +99,16 @@ const getEvents = async () => {
       'https://mpsz2rdhq1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/' +
       token;
     const result = await axios.get(url);
+
     if (result.data) {
       let locations = extractLocations(result.data.events);
-      localStorage.setItem('lastEvents', JSON.stringify(result.data));
+      let events = extractUsedData(result.data.events);
+      localStorage.setItem('lastEvents', JSON.stringify(events));
       localStorage.setItem('locations', JSON.stringify(locations));
+      NProgress.done();
+      return events;
     }
     NProgress.done();
-    let events = extractUsedData(result.data.events);
-    return events;
   }
 };
 
@@ -116,4 +118,4 @@ const extractLocations = (events) => {
   return locations;
 };
 
-export { extractLocations, getEvents };
+export { extractLocations, getEvents, checkToken, getAccessToken };
