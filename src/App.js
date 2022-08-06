@@ -50,8 +50,19 @@ class App extends Component {
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+    this.setState({
+      showWelcomeScreen: !(
+        code ||
+        isTokenValid ||
+        window.location.href.startsWith('http://localhost')
+      ),
+    });
+    if (
+      (code ||
+        isTokenValid ||
+        window.location.href.startsWith('http://localhost')) &&
+      this.mounted
+    ) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events: events });
