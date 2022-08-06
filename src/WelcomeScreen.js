@@ -28,7 +28,7 @@ function WelcomeScreen(props) {
               rel="nofollow noopener"
               className="login-button"
             >
-              <strong className="button-text">Sign in with google</strong>
+              <strong>Sign in with google</strong>
             </button>
           </div>
         </div>
