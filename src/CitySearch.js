@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InfoAlert } from './Alert';
+import { WarningAlert } from './Alert';
 
 class CitySearch extends Component {
   state = {
@@ -35,13 +35,18 @@ class CitySearch extends Component {
     this.props.updateLocation(suggestion);
   };
 
+  /*handleFocusOut = () => {
+    this.setState({ showSuggestions: false });
+  };*/
+
   render() {
     return (
       <div className="CitySearch">
         <div className="InfoAlert">
-          <InfoAlert text={this.state.infoText} />
+          <WarningAlert text={this.state.infoText} />
         </div>
-        <div className="searchBox">
+
+        <div className="searchbox">
           <label htmlFor="city"> Search for a city </label>
           <input
             type="text"
@@ -52,6 +57,7 @@ class CitySearch extends Component {
             onFocus={() => {
               this.setState({ showSuggestions: true });
             }}
+            /*onBlur={this.handleFocusOut}*/
           />
         </div>
         <ul
